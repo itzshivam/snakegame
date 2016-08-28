@@ -1,0 +1,223 @@
+<!-- <?php
+session_start();
+ $server="localhost";
+ $user="root";
+ $password="";
+ $database="nature";
+ 
+ $connect=new mysqli($server,$user,$password,$database) or die('not connected');
+ 
+?>
+ -->
+  <html>
+   <head>
+    <link rel="stylesheet" href="snake.css">
+   </head>
+     <body>
+      <section id="login">
+      
+      </section>
+   
+ <div id="formBody">
+ 
+     <form id="form" action="snake.php" method='POST'>
+      
+        
+        Please login to continue
+        <br><br>
+         Username : <input type="name" name="username" placeholder="username" style="font-size:15px;padding:2px; border-radius:5px;margin:10px"><br>
+         Password : <input type="password" name="password" placeholder="password"style="font-size:15px;padding:2px; border-radius:5px;margin:13px"><br>
+         <input type="submit" value="login" name="submit" style="font-size:20px;padding:5px; border-radius:5px;position:relative;left:100px;width:100px;margin:25px"><br><br><br>
+          Don't have an account? Create a new account 
+        </form>
+        
+      
+     </div>
+    </body>
+</html>
+<!-- 
+
+<?php
+
+if((isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])) ) 
+
+{
+  $username=$_POST['username'];
+  $password=md5($_POST['password']);
+  
+  $username_already="SELECT id FROM signUp WHERE username='$username' AND password='$password'";
+  
+  $connect_user=$connect->query($username_already);
+  
+  if($connect_user->num_rows>0)
+  {
+    set_session();
+  }
+  
+/*
+  $fname=fopen("/opt/lampp/htdocs/New Website/login/login.txt",'r');
+
+  $string =($name.' '.$password);
+echo $string== $check;
+   for($i=0;$i<strlen($check);$i+=1)
+	  {
+	 	  echo ($check[$i]." ");
+	 	  echo ($string[$i]." ");
+	 	  echo($check[$i]==$string[$i]);
+	  }
+
+  while(!feof($fname) )
+  {
+	$check=trim(fgets($fname));
+        if($check==$string)
+	    {
+	     
+	   //  echo $check==$string;
+	       $length1=strlen($name);
+	       $length2=strlen($check);
+	       if($length1<$length2)
+               {
+		    $var=0;
+		    for($i=0;$i<$length1;$i+=1)
+		    {
+		     if($check[$i]==$name[$i])
+		      {
+		      $var++;
+		     
+		      }
+		    }
+		    if( $var==$length1)
+		   {  
+		    set_session();
+		   
+		    break;
+		   } else 
+		   die("");
+                }
+                
+                else 
+              die("");
+           }
+           
+            else
+            {
+              die("");
+            }
+    }
+    */
+    
+    
+ 
+}
+if ((isset($_SESSION['username'] ) && isset($_SESSION['password'])))
+ {
+  
+ }
+ else 
+  {
+      die();
+  }
+  
+   function set_session(){
+     $_SESSION['username']=$_POST['username'];
+     $_SESSION['password']=$_POST['password'];
+   }
+  
+?> -->
+
+<script>
+
+ window.addEventListener('load',
+ function(){
+  document.getElementById("login").style.display="none";
+   document.getElementById("formBody").style.display="none";
+ }
+ 
+ ,false);
+</script>
+
+
+<html>
+ <head>
+ <title>snake</title>
+ <link rel="stylesheet" href="snake.css">
+ <script src="snake.js"></script>
+  <script src="jquery-2.1.3.min.js"></script>
+ <script type ="text/javascript">
+   function focusLevel(id){
+    for(var j=0;j<5;j++)
+    {
+        document.getElementById(j).style.background="grey";
+    }
+    var temp=document.getElementById(id);
+    temp.style.background="black";
+    levelValue=id;
+   }
+ </script>
+ </head>
+
+ <body bgColor="grey">
+ 
+  <canvas height="600px" width="800px" id="mainCanvas">
+    
+  </canvas>
+  
+  <form id="logout" method="GET" action="http://localhost/New Website/Front/nature.php">
+   <!-- <input type="text" name="userlogged" value="" disabled style="font-size:20;border-radius:5px;padding-left:10px;margin-bottom:10px;margin-left:-45px;" size="<?php echo 0.8*strlen($_SESSION['username'])?>"><br> -->
+    <!-- <input type="submit" value="log out" style="font-size:20px;padding:2px;background:cyan;margin-left:-30"> -->
+  </form>
+  
+  <div id="scoreBar" >
+    
+
+     <table cellspacing="10px" style="margin:40px auto">
+      <tr>
+        <td id="0" >Levels</td>
+      </tr>
+      <tr>
+        <td id="1" onclick="focusLevel(1)" ><a href="#">Easy</a></td>
+      </tr>
+      <tr>
+        <td id ="2" onclick="focusLevel(2)" ><a href="#">Medium</a></td>
+      </tr>
+      <tr>
+        <td id="3" onclick="focusLevel(3)"><a href="#">Hard</a></td>
+      </tr>
+      <tr>
+        <td id="4" onclick="focusLevel(4)" ><a href="#">Expert</a></td>
+      </tr>
+     </table>
+     
+      <ul>
+      <a href="#">  <li id="startGame" onclick="startGame()" onmouseover="this.style.background='black'" onmouseleave="this.style.background='grey'">Start</li></a>
+       <a href="game.php"> <li id="startGame" onmouseover="this.style.background='black'" onmouseleave="this.style.background='grey'">Back</li></a>
+      </ul>
+   <span id="scoreBox"> <h3>Score</h3>
+    <div id="scoreContinuous"></div></span>
+  </div>
+  
+
+ 
+  
+<div id="replayMenu">
+<h1 style="text-indent:150px;">
+  Game Over ! Your Score is : <span id="score" style="font-size:35px;"></span> 
+</h1>
+<table style="position:relative;left:350;" cellspacing="30" >
+  <tr >
+    <td class="onhov" style="background-color:black;color:white;padding-left:10px;padding-right:15;opacity:0.5"  ><a href="game.php" style="text-decoration:none;color:white;">
+      Exit</a>
+    </td>
+   <a href="#"> <td style="background-color:black;color:white;padding-left:15px;padding-right:10;opacity:0.5"  class="onhov" onclick="doFirst()">Replay</td></a>
+
+  </tr>
+</table>
+
+
+</div>
+
+ </body>
+</html>
+
+
+
