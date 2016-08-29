@@ -1,14 +1,4 @@
-<!-- <?php
-session_start();
- $server="localhost";
- $user="root";
- $password="";
- $database="nature";
- 
- $connect=new mysqli($server,$user,$password,$database) or die('not connected');
- 
-?>
- -->
+
   <html>
    <head>
     <link rel="stylesheet" href="snake.css">
@@ -35,95 +25,7 @@ session_start();
      </div>
     </body>
 </html>
-<!-- 
 
-<?php
-
-if((isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])) ) 
-
-{
-  $username=$_POST['username'];
-  $password=md5($_POST['password']);
-  
-  $username_already="SELECT id FROM signUp WHERE username='$username' AND password='$password'";
-  
-  $connect_user=$connect->query($username_already);
-  
-  if($connect_user->num_rows>0)
-  {
-    set_session();
-  }
-  
-/*
-  $fname=fopen("/opt/lampp/htdocs/New Website/login/login.txt",'r');
-
-  $string =($name.' '.$password);
-echo $string== $check;
-   for($i=0;$i<strlen($check);$i+=1)
-	  {
-	 	  echo ($check[$i]." ");
-	 	  echo ($string[$i]." ");
-	 	  echo($check[$i]==$string[$i]);
-	  }
-
-  while(!feof($fname) )
-  {
-	$check=trim(fgets($fname));
-        if($check==$string)
-	    {
-	     
-	   //  echo $check==$string;
-	       $length1=strlen($name);
-	       $length2=strlen($check);
-	       if($length1<$length2)
-               {
-		    $var=0;
-		    for($i=0;$i<$length1;$i+=1)
-		    {
-		     if($check[$i]==$name[$i])
-		      {
-		      $var++;
-		     
-		      }
-		    }
-		    if( $var==$length1)
-		   {  
-		    set_session();
-		   
-		    break;
-		   } else 
-		   die("");
-                }
-                
-                else 
-              die("");
-           }
-           
-            else
-            {
-              die("");
-            }
-    }
-    */
-    
-    
- 
-}
-if ((isset($_SESSION['username'] ) && isset($_SESSION['password'])))
- {
-  
- }
- else 
-  {
-      die();
-  }
-  
-   function set_session(){
-     $_SESSION['username']=$_POST['username'];
-     $_SESSION['password']=$_POST['password'];
-   }
-  
-?> -->
 
 <script>
 
@@ -163,8 +65,7 @@ if ((isset($_SESSION['username'] ) && isset($_SESSION['password'])))
   </canvas>
   
   <form id="logout" method="GET" action="http://localhost/New Website/Front/nature.php">
-   <!-- <input type="text" name="userlogged" value="" disabled style="font-size:20;border-radius:5px;padding-left:10px;margin-bottom:10px;margin-left:-45px;" size="<?php echo 0.8*strlen($_SESSION['username'])?>"><br> -->
-    <!-- <input type="submit" value="log out" style="font-size:20px;padding:2px;background:cyan;margin-left:-30"> -->
+  
   </form>
   
   <div id="scoreBar" >
